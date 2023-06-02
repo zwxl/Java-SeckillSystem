@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seckill.dao.OrderDao">
+    <select id="checksale" parameterType="int" resultType="Product">
+        select * from product
+        where productid=#{productid}
+    </select>
+    <update id="updatesale" parameterType="Product">
+        update product
+        set sale=sale+1,version=version+1
+        where productid = #{productid} and version=#{version}
+    </update>
+    <update id="updatesale1" parameterType="Product">
+        update product
+        set sale=sale+1
+        where productid = #{productid}
+    </update>
+    <insert id="createorder" parameterType="Orderlist">
+        insert into order_list values (#{orderid},#{ordertime},#{name})
+    </insert>
+</mapper>

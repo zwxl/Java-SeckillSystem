@@ -1,0 +1,16 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.seckill.dao.UserDao">
+    <insert id="register">
+        insert into user (phonenumber,idcardnumber,password,age,deposit,integrity,name)
+        values (#{phonenumber},#{idcardnumber},#{age},#{password},#{deposit},#{integrity},#{name})
+    </insert>
+
+    <select id="loginValidate" parameterType="String" resultType="String">
+        select password from user
+        where  phonenumber = #{phonenumber}
+    </select>
+
+</mapper>
